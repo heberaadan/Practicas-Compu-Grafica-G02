@@ -549,7 +549,7 @@ int main()
 
 		model = glm::translate(model, glm::vec3(1.2f, 3.85f, -1.1f));
 		model = glm::rotate(model, glm::radians(26.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(2.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 0.0f, 1.0f));
 
 		model = glm::scale(model, glm::vec3(eR, eR, 0.1f));
@@ -563,9 +563,9 @@ int main()
 
 		// *******************************************************************************************
 
-		model = glm::translate(model, glm::vec3(0.0f, 3.9f, -1.2f));
+		model = glm::translate(model, glm::vec3(0.0f, 3.9f, -1.1f));
 
-		model = glm::rotate(model, glm::radians(210.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(208.0f), glm::vec3(1.0f, 0.0f, 0.0f));
 		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 0.0f, 1.0f));
 
@@ -580,9 +580,9 @@ int main()
 
 		// *******************************************************************************************
 
-		model = glm::translate(model, glm::vec3(-1.2f, 3.9f, -1.0f));
+		model = glm::translate(model, glm::vec3(-1.2f, 3.9f, -1.1f));
 		model = glm::rotate(model, glm::radians(26.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(1.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 0.0f, 1.0f));
 
 		model = glm::scale(model, glm::vec3(eR, eR, 0.1f));
@@ -597,6 +597,8 @@ int main()
 
 		//model = glm::mat4(1.0f);
 		model = glm::rotate(glm::mat4(1.0), glm::radians(angle), glm::vec3(1.0f, 1.0f, 1.0f));
+
+		// *******************************************************************************************
 
 		model = glm::translate(model, glm::vec3(2.4f, 1.68f, -2.25f));
 
@@ -613,6 +615,8 @@ int main()
 		//model = glm::mat4(1.0f);
 		model = glm::rotate(glm::mat4(1.0), glm::radians(angle), glm::vec3(1.0f, 1.0f, 1.0f));
 
+		// *******************************************************************************************
+
 		model = glm::translate(model, glm::vec3(1.2f, 1.7f, -2.3f));
 
 		model = glm::rotate(model, glm::radians(210.0f), glm::vec3(1.0f, 0.0f, 0.0f));
@@ -627,6 +631,8 @@ int main()
 
 		//model = glm::mat4(1.0f);
 		model = glm::rotate(glm::mat4(1.0), glm::radians(angle), glm::vec3(1.0f, 1.0f, 1.0f));
+
+		// *******************************************************************************************
 
 		model = glm::translate(model, glm::vec3(0.0f, 1.7f, -2.25f));
 
@@ -643,7 +649,10 @@ int main()
 		//model = glm::mat4(1.0f);
 		model = glm::rotate(glm::mat4(1.0), glm::radians(angle), glm::vec3(1.0f, 1.0f, 1.0f));
 
+		// *******************************************************************************************
+
 		model = glm::translate(model, glm::vec3(-1.2f, 1.7f, -2.3f));
+
 		model = glm::rotate(model, glm::radians(210.0f), glm::vec3(1.0f, 0.0f, 0.0f));
 		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 0.0f, 1.0f));
@@ -656,6 +665,8 @@ int main()
 
 		//model = glm::mat4(1.0f);
 		model = glm::rotate(glm::mat4(1.0), glm::radians(angle), glm::vec3(1.0f, 1.0f, 1.0f));
+
+		// *******************************************************************************************
 
 		model = glm::translate(model, glm::vec3(-2.4f, 1.7f, -2.28f));
 
