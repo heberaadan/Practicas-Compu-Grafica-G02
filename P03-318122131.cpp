@@ -315,7 +315,7 @@ int main()
 	Se usa el Mouse y las teclas WASD y su posición inicial está en 0,0,1 y ve hacia 0,0,-1.
 	*/
 
-	camera = Camera(glm::vec3(2.0f, -5.0f, 2.0f), glm::vec3(0.0f, 1.0f, 0.0f), -60.0f, 180.0f, 0.1f, 0.5f);
+	camera = Camera(glm::vec3(1.0f, 5.0f, 2.0f), glm::vec3(0.0f, 1.0f, 0.0f), -60.0f, 90.0f, 0.1f, 0.5f);
 																	// Velocidad de movimiento |    | Velocidad de giro
 	GLuint uniformProjection = 0;
 	GLuint uniformModel = 0;
@@ -516,7 +516,7 @@ int main()
 		meshList[4]->RenderMeshGeometry();
 
 		/*
-			CARA MAGENTA
+			CARA MAGENTA		z -> atras + / enfrente - , y -> arriba / abajo, x -> izq / der
 
 			PRIMER PISO
 		*/
@@ -525,11 +525,10 @@ int main()
 		model = glm::rotate(glm::mat4(1.0), glm::radians(angle), glm::vec3(1.0f, 1.0f, 1.0f));
 
 		color = glm::vec3(1.0f, 0.0f, 1.0f);
-		eR = 2.2f;
 
-		model = glm::translate(model, glm::vec3(0.0f, 6.0f, -0.1f));
+		model = glm::translate(model, glm::vec3(0.0f, 6.0f, -0.09f));
 
-		model = glm::rotate(model, glm::radians(28.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(26.0f), glm::vec3(1.0f, 0.0f, 0.0f));
 		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 0.0f, 1.0f));
 
@@ -546,8 +545,10 @@ int main()
 		//model = glm::mat4(1.0f);
 		model = glm::rotate(glm::mat4(1.0), glm::radians(angle), glm::vec3(1.0f, 1.0f, 1.0f));
 
-		model = glm::translate(model, glm::vec3(1.2f, 3.85f, -1.2f));
-		model = glm::rotate(model, glm::radians(30.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+		// *******************************************************************************************
+
+		model = glm::translate(model, glm::vec3(1.2f, 3.85f, -1.1f));
+		model = glm::rotate(model, glm::radians(26.0f), glm::vec3(1.0f, 0.0f, 0.0f));
 		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 0.0f, 1.0f));
 
@@ -560,7 +561,10 @@ int main()
 		//model = glm::mat4(1.0f);
 		model = glm::rotate(glm::mat4(1.0), glm::radians(angle), glm::vec3(1.0f, 1.0f, 1.0f));
 
+		// *******************************************************************************************
+
 		model = glm::translate(model, glm::vec3(0.0f, 3.9f, -1.2f));
+
 		model = glm::rotate(model, glm::radians(210.0f), glm::vec3(1.0f, 0.0f, 0.0f));
 		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 0.0f, 1.0f));
@@ -572,10 +576,12 @@ int main()
 		meshList[4]->RenderMeshGeometry();
 
 		//model = glm::mat4(1.0f);
-		model = glm::rotate(glm::mat4(1.0), glm::radians(angle), glm::vec3(1.0f, 1.0f, 1.0f));
+		model = glm::rotate(glm::mat4(1.0), glm::radians(angle), glm::vec3(1.0f, 1.0f, 1.2f));
 
-		model = glm::translate(model, glm::vec3(-1.2f, 3.9f, -1.2f));
-		model = glm::rotate(model, glm::radians(30.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+		// *******************************************************************************************
+
+		model = glm::translate(model, glm::vec3(-1.2f, 3.9f, -1.0f));
+		model = glm::rotate(model, glm::radians(26.0f), glm::vec3(1.0f, 0.0f, 0.0f));
 		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 0.0f, 1.0f));
 
