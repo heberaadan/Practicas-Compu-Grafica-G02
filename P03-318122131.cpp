@@ -314,7 +314,7 @@ int main()
 	Se usa el Mouse y las teclas WASD y su posición inicial está en 0,0,1 y ve hacia 0,0,-1.
 	*/
 
-	camera = Camera(glm::vec3(2.0f, 6.0f, -2.0f), glm::vec3(0.0f, 1.0f, 0.0f), 60.0f, 0.0f, 0.1f, 0.5f);
+	camera = Camera(glm::vec3(2.0f, 3.0f, 2.0f), glm::vec3(0.0f, 1.0f, 0.0f), 60.0f, 0.0f, 0.1f, 0.5f);
 																	// Velocidad de movimiento |    | Velocidad de giro
 	
 	GLuint uniformProjection = 0;
@@ -652,19 +652,63 @@ int main()
 		color = glm::vec3(0.0f, 1.0f, 0.0f);
 		eR = 2.2f;
 
-		model = glm::translate(model, glm::vec3(0.0f, 6.0f, 2.0f));
+		model = glm::translate(model, glm::vec3(0.4f, 6.0f, 0.6f));
 
-		model = glm::rotate(model, glm::radians(28.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+		model = glm::rotate(model, glm::radians(8.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(149.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(-15.0f), glm::vec3(0.0f, 0.0f, 1.0f));
 
-		model = glm::scale(model, glm::vec3(eR, eR, 0.1f));
+		model = glm::scale(model, glm::vec3(0.1f, eR, eR));
 
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
 		meshList[4]->RenderMeshGeometry();
 
+		/*
+			SEGUNDO PISO
+		*/
 
+		model = glm::mat4(1.0f);
+
+		model = glm::translate(model, glm::vec3(0.4f, 3.6f, 1.7f));
+
+		model = glm::rotate(model, glm::radians(5.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(149.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(-15.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+
+		model = glm::scale(model, glm::vec3(0.1f, eR, eR));
+
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
+		meshList[4]->RenderMeshGeometry();
+
+		model = glm::mat4(1.0f);
+
+		model = glm::translate(model, glm::vec3(1.0f, 3.75f, 0.63f));
+
+		model = glm::rotate(model, glm::radians(7.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(147.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(165.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+
+		model = glm::scale(model, glm::vec3(0.1f, eR, eR));
+
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
+		meshList[4]->RenderMeshGeometry();
+
+		model = glm::mat4(1.0f);
+
+		model = glm::translate(model, glm::vec3(1.55f, 3.9f, -0.45f));
+
+		model = glm::rotate(model, glm::radians(10.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(149.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(-19.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+
+		model = glm::scale(model, glm::vec3(0.1f, eR, eR));
+
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
+		meshList[4]->RenderMeshGeometry();
 
 		glUseProgram(0);
 		mainWindow.swapBuffers();
