@@ -1,10 +1,12 @@
 //práctica 3: Modelado Geométrico y Cámara Sintética.
 #include <stdio.h>
+#include <iostream>
 #include <string.h>
 #include<cmath>
 #include<vector>
 #include <glew.h>
 #include <glfw3.h>
+#include <random>
 //glm
 #include<glm.hpp>
 #include<gtc\matrix_transform.hpp>
@@ -289,9 +291,10 @@ void CreateShaders()
 
 int main()
 {	
-	float eR;
+	float eR, angle = 0;
 	mainWindow = Window(800, 600);
 	mainWindow.Initialise();
+
 	//Cilindro y cono reciben resolución (slices, rebanadas) y Radio de circunferencia de la base y tapa
 
 	CrearCubo();//índice 0 en MeshList
@@ -300,8 +303,6 @@ int main()
 	CrearCono(25, 2.0f);//índice 3 en MeshList
 	CrearPiramideCuadrangular();//índice 4 en MeshList
 	CreateShaders();
-	
-	
 
 	/*Cámara se usa el comando: glm::lookAt(vector de posición, vector de orientación, vector up));
 	En la clase Camera se reciben 5 datos:
@@ -314,9 +315,8 @@ int main()
 	Se usa el Mouse y las teclas WASD y su posición inicial está en 0,0,1 y ve hacia 0,0,-1.
 	*/
 
-	camera = Camera(glm::vec3(2.0f, 3.0f, 2.0f), glm::vec3(0.0f, 1.0f, 0.0f), 60.0f, 0.0f, 0.1f, 0.5f);
+	camera = Camera(glm::vec3(2.0f, -5.0f, 2.0f), glm::vec3(0.0f, 1.0f, 0.0f), -60.0f, 180.0f, 0.1f, 0.5f);
 																	// Velocidad de movimiento |    | Velocidad de giro
-	
 	GLuint uniformProjection = 0;
 	GLuint uniformModel = 0;
 	GLuint uniformView = 0;
@@ -334,6 +334,8 @@ int main()
 
 	while (!mainWindow.getShouldClose())
 	{
+		angle += 0.0f;
+		eR = 2.2f;
 
 		GLfloat now = glfwGetTime();
 		deltaTime = now - lastTime;
@@ -354,13 +356,15 @@ int main()
 		uniformView = shaderList[0].getViewLocation();
 		uniformColor = shaderList[0].getColorLocation();
 
-		model = glm::mat4(1.0);
+		//model = glm::mat4(1.0f); // descomentar esta linea si quieres que el el prisam este inmovil
+		model = glm::rotate(glm::mat4(1.0), glm::radians(angle), glm::vec3(1.0f, 1.0f, 1.0f));
+		color = glm::vec3(0.0f, 0.0f, 0.0f);
+
 		model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(8.0f, 8.0f, 8.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
 		glUniformMatrix4fv(uniformView, 1, GL_FALSE, glm::value_ptr(camera.calculateViewMatrix()));
-		color = glm::vec3(0.0f, 0.0f, 0.0f);
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
 		meshList[1]->RenderMesh(); //dibuja cubo y pirámide triangular
 
@@ -372,9 +376,10 @@ int main()
 			PRIMER PISO
 		*/
 
-		model = glm::mat4(1.0f);
+		//model = glm::mat4(1.0f);
+		model = glm::rotate(glm::mat4(1.0), glm::radians(angle), glm::vec3(1.0f, 1.0f, 1.0f));
+
 		color = glm::vec3(1.0f, 0.0f, 0.0f);
-		eR = 2.2f;
 
 		model = glm::translate(model, glm::vec3(-0.37f, 6.0f, 0.65f));
 		model = glm::rotate(model, glm::radians(7.0f), glm::vec3(1.0f, 0.0f, 0.0f));
@@ -391,7 +396,8 @@ int main()
 			SEGUNDO PISO
 		*/
 
-		model = glm::mat4(1.0f);
+		//model = glm::mat4(1.0f);
+		model = glm::rotate(glm::mat4(1.0), glm::radians(angle), glm::vec3(1.0f, 1.0f, 1.0f));
 
 		model = glm::translate(model, glm::vec3(-1.0f, 3.8f, 0.71f));
 		model = glm::rotate(model, glm::radians(7.0f), glm::vec3(1.0f, 0.0f, 0.0f));
@@ -404,7 +410,8 @@ int main()
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
 		meshList[4]->RenderMeshGeometry();
 
-		model = glm::mat4(1.0f);
+		//model = glm::mat4(1.0f);
+		model = glm::rotate(glm::mat4(1.0), glm::radians(angle), glm::vec3(1.0f, 1.0f, 1.0f));
 
 		model = glm::translate(model, glm::vec3(-1.53f, 3.9f, -0.35f));
 		model = glm::rotate(model, glm::radians(7.0f), glm::vec3(1.0f, 0.0f, 0.0f));
@@ -417,7 +424,8 @@ int main()
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
 		meshList[4]->RenderMeshGeometry();
 
-		model = glm::mat4(1.0f);
+		//model = glm::mat4(1.0f);
+		model = glm::rotate(glm::mat4(1.0), glm::radians(angle), glm::vec3(1.0f, 1.0f, 1.0f));
 
 		model = glm::translate(model, glm::vec3(-0.38f, 3.7f, 1.75f));
 		model = glm::rotate(model, glm::radians(6.0f), glm::vec3(1.0f, 0.0f, 0.0f));
@@ -434,7 +442,8 @@ int main()
 				TERCER PISO
 		*/
 
-		model = glm::mat4(1.0f);
+		//model = glm::mat4(1.0f);
+		model = glm::rotate(glm::mat4(1.0), glm::radians(angle), glm::vec3(1.0f, 1.0f, 1.0f));
 
 		model = glm::translate(model, glm::vec3(-2.68f, 1.68f, -1.3f));
 
@@ -448,7 +457,8 @@ int main()
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
 		meshList[4]->RenderMeshGeometry();
 
-		model = glm::mat4(1.0f);
+		//model = glm::mat4(1.0f);
+		model = glm::rotate(glm::mat4(1.0), glm::radians(angle), glm::vec3(1.0f, 1.0f, 1.0f));
 
 		model = glm::translate(model, glm::vec3(-2.15f, 1.7f, -0.2f));
 
@@ -462,7 +472,8 @@ int main()
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
 		meshList[4]->RenderMeshGeometry();
 
-		model = glm::mat4(1.0f);
+		//model = glm::mat4(1.0f);
+		model = glm::rotate(glm::mat4(1.0), glm::radians(angle), glm::vec3(1.0f, 1.0f, 1.0f));
 
 		model = glm::translate(model, glm::vec3(-1.6f, 1.5f, 0.75f));
 
@@ -476,7 +487,8 @@ int main()
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
 		meshList[4]->RenderMeshGeometry();
 
-		model = glm::mat4(1.0f);
+		//model = glm::mat4(1.0f);
+		model = glm::rotate(glm::mat4(1.0), glm::radians(angle), glm::vec3(1.0f, 1.0f, 1.0f));
 
 		model = glm::translate(model, glm::vec3(-0.92f, 1.5f, 1.7f));
 		model = glm::rotate(model, glm::radians(6.0f), glm::vec3(1.0f, 0.0f, 0.0f));
@@ -489,7 +501,8 @@ int main()
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
 		meshList[4]->RenderMeshGeometry();
 
-		model = glm::mat4(1.0f);
+		//model = glm::mat4(1.0f);
+		model = glm::rotate(glm::mat4(1.0), glm::radians(angle), glm::vec3(1.0f, 1.0f, 1.0f));
 
 		model = glm::translate(model, glm::vec3(-0.4f, 1.45f, 2.76f));
 		model = glm::rotate(model, glm::radians(5.0f), glm::vec3(1.0f, 0.0f, 0.0f));
@@ -508,7 +521,9 @@ int main()
 			PRIMER PISO
 		*/
 
-		model = glm::mat4(1.0f);
+		//model = glm::mat4(1.0f);
+		model = glm::rotate(glm::mat4(1.0), glm::radians(angle), glm::vec3(1.0f, 1.0f, 1.0f));
+
 		color = glm::vec3(1.0f, 0.0f, 1.0f);
 		eR = 2.2f;
 
@@ -528,7 +543,8 @@ int main()
 			SEGUNDO PISO
 		*/
 
-		model = glm::mat4(1.0f);
+		//model = glm::mat4(1.0f);
+		model = glm::rotate(glm::mat4(1.0), glm::radians(angle), glm::vec3(1.0f, 1.0f, 1.0f));
 
 		model = glm::translate(model, glm::vec3(1.2f, 3.85f, -1.2f));
 		model = glm::rotate(model, glm::radians(30.0f), glm::vec3(1.0f, 0.0f, 0.0f));
@@ -541,7 +557,8 @@ int main()
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
 		meshList[4]->RenderMeshGeometry();
 
-		model = glm::mat4(1.0f);
+		//model = glm::mat4(1.0f);
+		model = glm::rotate(glm::mat4(1.0), glm::radians(angle), glm::vec3(1.0f, 1.0f, 1.0f));
 
 		model = glm::translate(model, glm::vec3(0.0f, 3.9f, -1.2f));
 		model = glm::rotate(model, glm::radians(210.0f), glm::vec3(1.0f, 0.0f, 0.0f));
@@ -554,7 +571,8 @@ int main()
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
 		meshList[4]->RenderMeshGeometry();
 
-		model = glm::mat4(1.0f);
+		//model = glm::mat4(1.0f);
+		model = glm::rotate(glm::mat4(1.0), glm::radians(angle), glm::vec3(1.0f, 1.0f, 1.0f));
 
 		model = glm::translate(model, glm::vec3(-1.2f, 3.9f, -1.2f));
 		model = glm::rotate(model, glm::radians(30.0f), glm::vec3(1.0f, 0.0f, 0.0f));
@@ -571,7 +589,8 @@ int main()
 				TERCER PISO
 		*/
 
-		model = glm::mat4(1.0f);
+		//model = glm::mat4(1.0f);
+		model = glm::rotate(glm::mat4(1.0), glm::radians(angle), glm::vec3(1.0f, 1.0f, 1.0f));
 
 		model = glm::translate(model, glm::vec3(2.4f, 1.68f, -2.25f));
 
@@ -585,7 +604,8 @@ int main()
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
 		meshList[4]->RenderMeshGeometry();
 
-		model = glm::mat4(1.0f);
+		//model = glm::mat4(1.0f);
+		model = glm::rotate(glm::mat4(1.0), glm::radians(angle), glm::vec3(1.0f, 1.0f, 1.0f));
 
 		model = glm::translate(model, glm::vec3(1.2f, 1.7f, -2.3f));
 
@@ -599,7 +619,8 @@ int main()
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
 		meshList[4]->RenderMeshGeometry();
 
-		model = glm::mat4(1.0f);
+		//model = glm::mat4(1.0f);
+		model = glm::rotate(glm::mat4(1.0), glm::radians(angle), glm::vec3(1.0f, 1.0f, 1.0f));
 
 		model = glm::translate(model, glm::vec3(0.0f, 1.7f, -2.25f));
 
@@ -613,7 +634,8 @@ int main()
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
 		meshList[4]->RenderMeshGeometry();
 
-		model = glm::mat4(1.0f);
+		//model = glm::mat4(1.0f);
+		model = glm::rotate(glm::mat4(1.0), glm::radians(angle), glm::vec3(1.0f, 1.0f, 1.0f));
 
 		model = glm::translate(model, glm::vec3(-1.2f, 1.7f, -2.3f));
 		model = glm::rotate(model, glm::radians(210.0f), glm::vec3(1.0f, 0.0f, 0.0f));
@@ -626,7 +648,8 @@ int main()
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
 		meshList[4]->RenderMeshGeometry();
 
-		model = glm::mat4(1.0f);
+		//model = glm::mat4(1.0f);
+		model = glm::rotate(glm::mat4(1.0), glm::radians(angle), glm::vec3(1.0f, 1.0f, 1.0f));
 
 		model = glm::translate(model, glm::vec3(-2.4f, 1.7f, -2.28f));
 
@@ -648,9 +671,10 @@ int main()
 			PRIMER PISO
 		*/
 
-		model = glm::mat4(1.0f);
+		//model = glm::mat4(1.0f);
+		model = glm::rotate(glm::mat4(1.0), glm::radians(angle), glm::vec3(1.0f, 1.0f, 1.0f));
+
 		color = glm::vec3(0.0f, 1.0f, 0.0f);
-		eR = 2.2f;
 
 		model = glm::translate(model, glm::vec3(0.4f, 6.0f, 0.6f));
 
@@ -668,7 +692,8 @@ int main()
 			SEGUNDO PISO
 		*/
 
-		model = glm::mat4(1.0f);
+		//model = glm::mat4(1.0f);
+		model = glm::rotate(glm::mat4(1.0), glm::radians(angle), glm::vec3(1.0f, 1.0f, 1.0f));
 
 		model = glm::translate(model, glm::vec3(0.4f, 3.6f, 1.7f));
 
@@ -682,7 +707,8 @@ int main()
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
 		meshList[4]->RenderMeshGeometry();
 
-		model = glm::mat4(1.0f);
+		//model = glm::mat4(1.0f);
+		model = glm::rotate(glm::mat4(1.0), glm::radians(angle), glm::vec3(1.0f, 1.0f, 1.0f));
 
 		model = glm::translate(model, glm::vec3(1.0f, 3.75f, 0.63f));
 
@@ -696,11 +722,12 @@ int main()
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
 		meshList[4]->RenderMeshGeometry();
 
-		model = glm::mat4(1.0f);
+		//model = glm::mat4(1.0f);
+		model = glm::rotate(glm::mat4(1.0), glm::radians(angle), glm::vec3(1.0f, 1.0f, 1.0f));
 
 		model = glm::translate(model, glm::vec3(1.55f, 3.9f, -0.45f));
 
-		model = glm::rotate(model, glm::radians(10.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(9.0f), glm::vec3(1.0f, 0.0f, 0.0f));
 		model = glm::rotate(model, glm::radians(149.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::rotate(model, glm::radians(-19.0f), glm::vec3(0.0f, 0.0f, 1.0f));
 
@@ -709,6 +736,105 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
 		meshList[4]->RenderMeshGeometry();
+
+		/*
+				TERCER PISO 
+		*/
+
+		//model = glm::mat4(1.0f);
+		model = glm::rotate(glm::mat4(1.0), glm::radians(angle), glm::vec3(1.0f, 1.0f, 1.0f));
+
+		model = glm::translate(model, glm::vec3(0.38f, 1.3f, 2.8f));
+
+		model = glm::rotate(model, glm::radians(3.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(149.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(-17.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+
+		model = glm::scale(model, glm::vec3(0.1f, eR, eR));
+
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
+		meshList[4]->RenderMeshGeometry();
+
+		//model = glm::mat4(1.0f);
+		model = glm::rotate(glm::mat4(1.0), glm::radians(angle), glm::vec3(1.0f, 1.0f, 1.0f));
+
+		model = glm::translate(model, glm::vec3(0.9f, 1.4f, 1.8f));
+
+		model = glm::rotate(model, glm::radians(3.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(149.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(165.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+
+		model = glm::scale(model, glm::vec3(0.1f, eR, eR));
+
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
+		meshList[4]->RenderMeshGeometry();
+
+		//model = glm::mat4(1.0f);
+		model = glm::rotate(glm::mat4(1.0), glm::radians(angle), glm::vec3(1.0f, 1.0f, 1.0f));
+
+		model = glm::translate(model, glm::vec3(1.5f, 1.4f, 0.8f));
+
+		model = glm::rotate(model, glm::radians(3.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(149.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(-16.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+
+		model = glm::scale(model, glm::vec3(0.1f, eR, eR));
+
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
+		meshList[4]->RenderMeshGeometry();
+
+		//model = glm::mat4(1.0f);
+		model = glm::rotate(glm::mat4(1.0), glm::radians(angle), glm::vec3(1.0f, 1.0f, 1.0f));
+
+		model = glm::translate(model, glm::vec3(2.2f, 1.6f, -0.2f));
+
+		model = glm::rotate(model, glm::radians(6.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(149.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(165.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+
+		model = glm::scale(model, glm::vec3(0.1f, eR, eR));
+
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
+		meshList[4]->RenderMeshGeometry();
+
+		//model = glm::mat4(1.0f);
+		model = glm::rotate(glm::mat4(1.0), glm::radians(angle), glm::vec3(1.0f, 1.0f, 1.0f));
+
+		model = glm::translate(model, glm::vec3(2.8f, 1.5f, -1.3f));
+
+		model = glm::rotate(model, glm::radians(6.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(149.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(-15.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+
+		model = glm::scale(model, glm::vec3(0.1f, eR, 2.4));
+
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
+		meshList[4]->RenderMeshGeometry();
+
+		/*
+				CUARTA CARA (CYAN)
+		*/
+
+		color = glm::vec3(0.0f, 1.0f, 1.0f);
+
+		model = glm::rotate(glm::mat4(1.0), glm::radians(angle), glm::vec3(1.0f, 1.0f, 1.0f));
+
+		model = glm::translate(model, glm::vec3(0.0f, -0.05f, 2.6f));
+
+		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+
+		model = glm::scale(model, glm::vec3(eR, 0.1f, eR));
+
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
+		meshList[1]->RenderMesh();
 
 		glUseProgram(0);
 		mainWindow.swapBuffers();
