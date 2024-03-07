@@ -24,6 +24,7 @@ Window::Window(GLint windowWidth, GLint windowHeight)
 	articulacion5 = 0.0f;
 	articulacion6 = 0.0f;
 	articulacion7 = 0.0f;
+	articulacion8 = 0.0f;
 	
 	for (size_t i = 0; i < 1024; i++)
 	{
@@ -121,30 +122,26 @@ void Window::ManejaTeclado(GLFWwindow* window, int key, int code, int action, in
 		}
 		else if (theWindow->articulacion1 < 50) {
 			theWindow->articulacion1 += 10.0;
-			std::cout << "T (articulacion1): " << theWindow->articulacion1 <<"\n";
 		}
 	}
 	if (key == GLFW_KEY_G)
 	{
 		if (theWindow->articulacion2 == -90 || theWindow->articulacion2 == 60) {
 			theWindow->articulacion1 = theWindow->articulacion1;
-		}else if (theWindow->articulacion1 > -90) {
+		}else if (theWindow->articulacion1 > -70) {
 			theWindow->articulacion1 -= 10.0;
-			std::cout << "G (articulacion1): " << theWindow->articulacion1 << "\n";
 		}
 	}
 	if (key == GLFW_KEY_H)
 	{
-		if (theWindow->articulacion2 < 60 && theWindow->articulacion1 < 30) {
+		if (theWindow->articulacion2 < 60) {
 			theWindow->articulacion2 += 10.0;
-			std::cout << "H (articulacion2): " << theWindow->articulacion2 << "\n";
 		}
 	}
 	if (key == GLFW_KEY_F)
 	{
 		if (theWindow->articulacion2 > -90) {
 			theWindow->articulacion2 -= 10.0;
-			std::cout << "F (articulacion2): " << theWindow->articulacion2 << "\n";
 		}
 	}
 	if (key == GLFW_KEY_O)
@@ -191,7 +188,6 @@ void Window::ManejaTeclado(GLFWwindow* window, int key, int code, int action, in
 
 	if (key == GLFW_KEY_M)
 	{
-		std::cout << "M (articulacion6): " << theWindow->articulacion6 << "\n";
 		if (theWindow->articulacion6 < 30) {
 			theWindow->articulacion6 += 10.0;
 		}
@@ -199,7 +195,6 @@ void Window::ManejaTeclado(GLFWwindow* window, int key, int code, int action, in
 
 	if (key == GLFW_KEY_N)
 	{
-		std::cout << "N (articulacion6): " << theWindow->articulacion6 << "\n";
 		if (theWindow->articulacion6 > -20) {
 			theWindow->articulacion6 -= 10.0;
 		}
@@ -216,6 +211,20 @@ void Window::ManejaTeclado(GLFWwindow* window, int key, int code, int action, in
 	{
 		if (theWindow->articulacion7 > -20) {
 			theWindow->articulacion7 -= 10.0;
+		}
+	}
+
+	if (key == GLFW_KEY_V)
+	{
+		if (theWindow->articulacion8 < 30) {
+			theWindow->articulacion8 += 10.0;
+		}
+	}
+
+	if (key == GLFW_KEY_B)
+	{
+		if (theWindow->articulacion8 > -20) {
+			theWindow->articulacion8 -= 10.0;
 		}
 	}
 

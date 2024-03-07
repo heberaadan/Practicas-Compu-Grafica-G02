@@ -17,6 +17,6 @@ C:\Users\Hhebe\OneDrive\Documentos\8° Semestre\Compu Grafica\Practicas\P04\Prac
 C:\Users\Hhebe\OneDrive\Documentos\8° Semestre\Compu Grafica\Practicas\P04\Practica\Practica_04\P04\P04-318122131.cpp(241,32): warning C4244:         [
 C:\Users\Hhebe\OneDrive\Documentos\8° Semestre\Compu Grafica\Practicas\P04\Practica\Practica_04\P04\P04-318122131.cpp(241,32): warning C4244:             _Ty=GLfloat
 C:\Users\Hhebe\OneDrive\Documentos\8° Semestre\Compu Grafica\Practicas\P04\Practica\Practica_04\P04\P04-318122131.cpp(241,32): warning C4244:         ]
-C:\Users\Hhebe\OneDrive\Documentos\8° Semestre\Compu Grafica\Practicas\P04\Practica\Practica_04\P04\P04-318122131.cpp(339,15): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\Hhebe\OneDrive\Documentos\8° Semestre\Compu Grafica\Practicas\P04\Practica\Practica_04\P04\P04-318122131.cpp(341,33): warning C4244: '+=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\Hhebe\OneDrive\Documentos\8° Semestre\Compu Grafica\Practicas\P04\Practica\Practica_04\P04\P04-318122131.cpp(340,15): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\Hhebe\OneDrive\Documentos\8° Semestre\Compu Grafica\Practicas\P04\Practica\Practica_04\P04\P04-318122131.cpp(342,33): warning C4244: '+=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
   P04.vcxproj -> C:\Users\Hhebe\OneDrive\Documentos\8° Semestre\Compu Grafica\Practicas\P04\Practica\Practica_04\Debug\P04.exe
