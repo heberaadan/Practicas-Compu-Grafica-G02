@@ -1,4 +1,5 @@
 #include "Window.h"
+#include <iostream>
 
 Window::Window()
 {
@@ -22,6 +23,7 @@ Window::Window(GLint windowWidth, GLint windowHeight)
 	articulacion4 = 0.0f;
 	articulacion5 = 0.0f;
 	articulacion6 = 0.0f;
+	articulacion7 = 0.0f;
 	
 	for (size_t i = 0; i < 1024; i++)
 	{
@@ -112,43 +114,109 @@ void Window::ManejaTeclado(GLFWwindow* window, int key, int code, int action, in
 		glfwSetWindowShouldClose(window, GL_TRUE);
 	}
 
-	
-	if (key == GLFW_KEY_E)
-	{
-		theWindow->rotax += 10.0;
-	}
-	if (key == GLFW_KEY_R)
-	{
-		theWindow->rotay += 10.0; //rotar sobre el eje y 10 grados
-	}
 	if (key == GLFW_KEY_T)
 	{
-		theWindow->rotaz += 10.0;
+		if (theWindow->articulacion2 == -90 || theWindow->articulacion2 == 60) {
+			theWindow->articulacion1 = theWindow->articulacion1;
+		}
+		else if (theWindow->articulacion1 < 50) {
+			theWindow->articulacion1 += 10.0;
+			std::cout << "T (articulacion1): " << theWindow->articulacion1 <<"\n";
+		}
 	}
-	if (key == GLFW_KEY_F)
-	{
-		theWindow->articulacion1 += 10.0;
-	}
-
 	if (key == GLFW_KEY_G)
 	{
-		theWindow->articulacion2 += 10.0;
+		if (theWindow->articulacion2 == -90 || theWindow->articulacion2 == 60) {
+			theWindow->articulacion1 = theWindow->articulacion1;
+		}else if (theWindow->articulacion1 > -90) {
+			theWindow->articulacion1 -= 10.0;
+			std::cout << "G (articulacion1): " << theWindow->articulacion1 << "\n";
+		}
 	}
 	if (key == GLFW_KEY_H)
 	{
-		theWindow->articulacion3 += 10.0;
+		if (theWindow->articulacion2 < 60 && theWindow->articulacion1 < 30) {
+			theWindow->articulacion2 += 10.0;
+			std::cout << "H (articulacion2): " << theWindow->articulacion2 << "\n";
+		}
 	}
-	if (key == GLFW_KEY_J)
+	if (key == GLFW_KEY_F)
 	{
-		theWindow->articulacion4 += 10.0;
+		if (theWindow->articulacion2 > -90) {
+			theWindow->articulacion2 -= 10.0;
+			std::cout << "F (articulacion2): " << theWindow->articulacion2 << "\n";
+		}
 	}
-	if (key == GLFW_KEY_K)
+	if (key == GLFW_KEY_O)
 	{
-		theWindow->articulacion5 += 10.0;
+		if (theWindow->articulacion3 < 40){
+			theWindow->articulacion3 += 10.0;
+		}
 	}
+
 	if (key == GLFW_KEY_L)
 	{
-		theWindow->articulacion6 += 10.0;
+		if (theWindow->articulacion3 > 0) {
+			theWindow->articulacion3 -= 10.0;
+		}
+	}
+
+	if (key == GLFW_KEY_U)
+	{
+		if (theWindow->articulacion4 < 20) {
+			theWindow->articulacion4 += 10.0;
+		}
+	}
+
+	if (key == GLFW_KEY_J)
+	{
+		if (theWindow->articulacion4 > -30) {
+			theWindow->articulacion4 -= 10.0;
+		}
+	}
+
+	if (key == GLFW_KEY_I)
+	{
+		if (theWindow->articulacion5 < 20) {
+			theWindow->articulacion5 += 10.0;
+		}
+	}
+
+	if (key == GLFW_KEY_K)
+	{
+		if (theWindow->articulacion5 > -30) {
+			theWindow->articulacion5 -= 10.0;
+		}
+	}
+
+	if (key == GLFW_KEY_M)
+	{
+		std::cout << "M (articulacion6): " << theWindow->articulacion6 << "\n";
+		if (theWindow->articulacion6 < 30) {
+			theWindow->articulacion6 += 10.0;
+		}
+	}
+
+	if (key == GLFW_KEY_N)
+	{
+		std::cout << "N (articulacion6): " << theWindow->articulacion6 << "\n";
+		if (theWindow->articulacion6 > -20) {
+			theWindow->articulacion6 -= 10.0;
+		}
+	}
+
+	if (key == GLFW_KEY_X)
+	{
+		if (theWindow->articulacion7 < 30) {
+			theWindow->articulacion7 += 10.0;
+		}
+	}
+
+	if (key == GLFW_KEY_Z)
+	{
+		if (theWindow->articulacion7 > -20) {
+			theWindow->articulacion7 -= 10.0;
+		}
 	}
 
 
