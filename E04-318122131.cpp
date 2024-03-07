@@ -325,6 +325,7 @@ int main()
 	sp.load();//enviar la esfera al shader
 
 	glm::mat4 model(1.0);//Inicializar matriz de Modelo 4x4
+	glm::mat4 base(1.0);//Inicializar matriz de Modelo 4x4
 	glm::mat4 modelaux(1.0);//Inicializar matriz de Modelo 4x4
 
 	glm::vec3 color = glm::vec3(0.0f, 0.0f, 0.0f); //inicializar Color para enviar a variable Uniform;
@@ -498,6 +499,7 @@ int main()
 		model = glm::mat4(1.0);
 
 		model = glm::translate(model, glm::vec3(0.0f, -1.0f, 0.0f));
+		base = model;
 		modelaux = model;
 		model = glm::scale(model, glm::vec3(7.0f, 2.0f, 5.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model)); // 
@@ -509,8 +511,18 @@ int main()
 		model = modelaux;
 
 		// LLANTA DELANTERA IZQUIERDA
-
 		model = glm::translate(model, glm::vec3(3.5f, -1.0f, 2.5f));
+		model = glm::rotate(model, glm::radians(mainWindow.getarticulacion5()), glm::vec3(0.0f, 0.0f, 1.0f));
+		modelaux = model;
+		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model)); //
+		color = glm::vec3(1.0f, 0.0f, 0.0f);
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		sp.render();
+
+		model = modelaux;
+
+		model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model)); //
@@ -520,7 +532,21 @@ int main()
 
 		//LLANTA DELANTERA DERECHA
 
-		model = glm::translate(model, glm::vec3(0.0f, -5.0f, 0.0f));
+		model = base;
+
+		model = glm::translate(model, glm::vec3(-3.5f, -1.0f, -2.5f));
+		model = glm::rotate(model, glm::radians(mainWindow.getarticulacion6()), glm::vec3(0.0f, 0.0f, 1.0f));
+		modelaux = model;
+		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model)); //
+		color = glm::vec3(1.0f, 0.0f, 0.0f);
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		sp.render();
+
+		model = modelaux;
+
+		model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model)); //
 		color = glm::vec3(0.1f, 0.0f, 0.0f);
@@ -529,7 +555,21 @@ int main()
 
 		// LLANTA TRASERA DERECHA
 
-		model = glm::translate(model, glm::vec3(-7.0f, 0.0f, 0.0f));
+		model = base;
+
+		model = glm::translate(model, glm::vec3(3.5f, -1.0f, -2.5f));
+		model = glm::rotate(model, glm::radians(mainWindow.getarticulacion7()), glm::vec3(0.0f, 0.0f, 1.0f));
+		modelaux = model;
+		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model)); //
+		color = glm::vec3(1.0f, 0.0f, 0.0f);
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		sp.render();
+
+		model = modelaux;
+
+		model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model)); //
 		color = glm::vec3(0.1f, 0.0f, 0.0f);
@@ -538,7 +578,21 @@ int main()
 
 		// LLANTA TRASERA IZQUIERDA
 
-		model = glm::translate(model, glm::vec3(0.0f, 5.0f, 0.0f));
+		model = base;
+
+		model = glm::translate(model, glm::vec3(-3.5f, -1.0f, 2.5f));
+		model = glm::rotate(model, glm::radians(mainWindow.getarticulacion8()), glm::vec3(0.0f, 0.0f, 1.0f));
+		modelaux = model;
+		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model)); //
+		color = glm::vec3(1.0f, 0.0f, 0.0f);
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		sp.render();
+
+		model = modelaux;
+
+		model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model)); //
 		color = glm::vec3(0.1f, 0.0f, 0.0f);

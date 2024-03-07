@@ -115,7 +115,7 @@ void Window::ManejaTeclado(GLFWwindow* window, int key, int code, int action, in
 		glfwSetWindowShouldClose(window, GL_TRUE);
 	}
 
-	if (key == GLFW_KEY_T)
+	if (key == GLFW_KEY_R)
 	{
 		if (theWindow->articulacion2 == -90 || theWindow->articulacion2 == 60) {
 			theWindow->articulacion1 = theWindow->articulacion1;
@@ -124,7 +124,7 @@ void Window::ManejaTeclado(GLFWwindow* window, int key, int code, int action, in
 			theWindow->articulacion1 += 10.0;
 		}
 	}
-	if (key == GLFW_KEY_G)
+	if (key == GLFW_KEY_F)
 	{
 		if (theWindow->articulacion2 == -90 || theWindow->articulacion2 == 60) {
 			theWindow->articulacion1 = theWindow->articulacion1;
@@ -132,13 +132,13 @@ void Window::ManejaTeclado(GLFWwindow* window, int key, int code, int action, in
 			theWindow->articulacion1 -= 10.0;
 		}
 	}
-	if (key == GLFW_KEY_H)
+	if (key == GLFW_KEY_E)
 	{
 		if (theWindow->articulacion2 < 60) {
 			theWindow->articulacion2 += 10.0;
 		}
 	}
-	if (key == GLFW_KEY_F)
+	if (key == GLFW_KEY_Q)
 	{
 		if (theWindow->articulacion2 > -90) {
 			theWindow->articulacion2 -= 10.0;
