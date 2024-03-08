@@ -376,7 +376,7 @@ int main()
 		//rotación alrededor de la articulación que une con la cabina
 
 		model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
-		model = glm::rotate(model, glm::radians(mainWindow.getarticulacion1()), glm::vec3(0.0f, 0.0f, 1.0f));
+		model = glm::rotate(model, glm::radians(mainWindow.getarticulacion1g()), glm::vec3(0.0f, 0.0f, 1.0f));
 		modelaux = model; // Para descartar la escala
 		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model)); // 
@@ -408,7 +408,7 @@ int main()
 		// SEGUNDA ARTICULACIÓN 
 		color = glm::vec3(1.0f, 1.0f, 0.0f);
 		model = glm::translate(model, glm::vec3(2.5f, 0.0f, 0.0f));
-		model = glm::rotate(model, glm::radians(mainWindow.getarticulacion2()), glm::vec3(0.0f, 0.0f, 1.0f));
+		model = glm::rotate(model, glm::radians(mainWindow.getarticulacion2g()), glm::vec3(0.0f, 0.0f, 1.0f));
 		modelaux = model;
 		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model)); // 
@@ -442,7 +442,7 @@ int main()
 		// TERCERA ARTICULACIÓN 
 
 		model = glm::translate(model, glm::vec3(0.0f, -2.5f, 0.0f));
-		model = glm::rotate(model, glm::radians(mainWindow.getarticulacion3()), glm::vec3(0.0f, 0.0f, 1.0f));
+		model = glm::rotate(model, glm::radians(mainWindow.getarticulacion3g()), glm::vec3(0.0f, 0.0f, 1.0f));
 		modelaux = model;
 		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model)); // 
@@ -474,7 +474,7 @@ int main()
 		// CUARTA ARTICULACIÓN 
 
 		model = glm::translate(model, glm::vec3(0.0f, -2.5f, 0.0f));
-		model = glm::rotate(model, glm::radians(mainWindow.getarticulacion4()), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(mainWindow.getarticulacion4g()), glm::vec3(0.0f, 1.0f, 0.0f));
 		modelaux = model;
 		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model)); // 
@@ -512,7 +512,7 @@ int main()
 
 		// LLANTA DELANTERA IZQUIERDA
 		model = glm::translate(model, glm::vec3(3.5f, -1.0f, 2.5f));
-		model = glm::rotate(model, glm::radians(mainWindow.getarticulacion5()), glm::vec3(0.0f, 0.0f, 1.0f));
+		model = glm::rotate(model, glm::radians(mainWindow.getarticulacion5g()), glm::vec3(0.0f, 0.0f, 1.0f));
 		modelaux = model;
 		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model)); //
@@ -535,7 +535,7 @@ int main()
 		model = base;
 
 		model = glm::translate(model, glm::vec3(-3.5f, -1.0f, -2.5f));
-		model = glm::rotate(model, glm::radians(mainWindow.getarticulacion6()), glm::vec3(0.0f, 0.0f, 1.0f));
+		model = glm::rotate(model, glm::radians(mainWindow.getarticulacion7g()), glm::vec3(0.0f, 0.0f, 1.0f));
 		modelaux = model;
 		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model)); //
@@ -558,7 +558,7 @@ int main()
 		model = base;
 
 		model = glm::translate(model, glm::vec3(3.5f, -1.0f, -2.5f));
-		model = glm::rotate(model, glm::radians(mainWindow.getarticulacion7()), glm::vec3(0.0f, 0.0f, 1.0f));
+		model = glm::rotate(model, glm::radians(mainWindow.getarticulacion6g()), glm::vec3(0.0f, 0.0f, 1.0f));
 		modelaux = model;
 		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model)); //
@@ -581,7 +581,7 @@ int main()
 		model = base;
 
 		model = glm::translate(model, glm::vec3(-3.5f, -1.0f, 2.5f));
-		model = glm::rotate(model, glm::radians(mainWindow.getarticulacion8()), glm::vec3(0.0f, 0.0f, 1.0f));
+		model = glm::rotate(model, glm::radians(mainWindow.getarticulacion8g()), glm::vec3(0.0f, 0.0f, 1.0f));
 		modelaux = model;
 		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model)); //

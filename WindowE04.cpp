@@ -29,15 +29,8 @@ Window::Window(GLint windowWidth, GLint windowHeight)
 	articulacion10 = 0.0f;
 	articulacion11 = 0.0f;
 	articulacion12 = 0.0f;
-	articulacion1g = 0.0f;
-	articulacion2g = 0.0f;
-	articulacion3g = 0.0f;
-	articulacion4g = 0.0f;
-	articulacion5g = 0.0f;
-	articulacion6g = 0.0f;
-	articulacion7g = 0.0f;
-	articulacion8g = 0.0f;
-	
+	articulacion13 = 0.0f;
+	articulacion14 = 0.0f;
 	
 	for (size_t i = 0; i < 1024; i++)
 	{
@@ -136,10 +129,6 @@ void Window::ManejaTeclado(GLFWwindow* window, int key, int code, int action, in
 		else if (theWindow->articulacion1 < 50) {
 			theWindow->articulacion1 += 10.0;
 		}
-
-		if (theWindow->articulacion1g < 50) {
-			theWindow->articulacion1g += 10;
-		}
 	}
 	if (key == GLFW_KEY_F)
 	{
@@ -147,10 +136,6 @@ void Window::ManejaTeclado(GLFWwindow* window, int key, int code, int action, in
 			theWindow->articulacion1 = theWindow->articulacion1;
 		}else if (theWindow->articulacion1 > -70) {
 			theWindow->articulacion1 -= 10.0;
-		}
-
-		if (theWindow->articulacion1g > -50) {
-			theWindow->articulacion1g -= 10;
 		}
 	}
 	if (key == GLFW_KEY_E)
@@ -161,7 +146,7 @@ void Window::ManejaTeclado(GLFWwindow* window, int key, int code, int action, in
 	}
 	if (key == GLFW_KEY_Q)
 	{
-		if (theWindow->articulacion2 > -50) {
+		if (theWindow->articulacion2 > -90) {
 			theWindow->articulacion2 -= 10.0;
 		}
 	}
@@ -170,20 +155,12 @@ void Window::ManejaTeclado(GLFWwindow* window, int key, int code, int action, in
 		if (theWindow->articulacion3 < 40){
 			theWindow->articulacion3 += 10.0;
 		}
-
-		if (theWindow->articulacion2g < 60) {
-			theWindow->articulacion2g += 10;
-		}
 	}
 
 	if (key == GLFW_KEY_G)
 	{
 		if (theWindow->articulacion3 > 0) {
 			theWindow->articulacion3 -= 10.0;
-		}
-
-		if (theWindow->articulacion2g > -50) {
-			theWindow->articulacion2g -= 10;
 		}
 	}
 
@@ -192,20 +169,12 @@ void Window::ManejaTeclado(GLFWwindow* window, int key, int code, int action, in
 		if (theWindow->articulacion4 < 20) {
 			theWindow->articulacion4 += 10.0;
 		}
-
-		if (theWindow->articulacion3g < 60) {
-			theWindow->articulacion3g += 10;
-		}
 	}
 
 	if (key == GLFW_KEY_H)
 	{
 		if (theWindow->articulacion4 > -30) {
 			theWindow->articulacion4 -= 10.0;
-		}
-
-		if (theWindow->articulacion3g > -50) {
-			theWindow->articulacion3g -= 10;
 		}
 	}
 
@@ -214,20 +183,12 @@ void Window::ManejaTeclado(GLFWwindow* window, int key, int code, int action, in
 		if (theWindow->articulacion5 < 20) {
 			theWindow->articulacion5 += 10.0;
 		}
-
-		if (theWindow->articulacion4g < 60) {
-			theWindow->articulacion4g += 10;
-		}
 	}
 
 	if (key == GLFW_KEY_J)
 	{
 		if (theWindow->articulacion5 > -30) {
 			theWindow->articulacion5 -= 10.0;
-		}
-
-		if (theWindow->articulacion4g > -50) {
-			theWindow->articulacion4g -= 10;
 		}
 	}
 
@@ -264,8 +225,6 @@ void Window::ManejaTeclado(GLFWwindow* window, int key, int code, int action, in
 		if (theWindow->articulacion8 < 30) {
 			theWindow->articulacion8 += 10.0;
 		}
-
-		theWindow->articulacion5g += 10.0;
 	}
 
 	if (key == GLFW_KEY_2)
@@ -273,8 +232,6 @@ void Window::ManejaTeclado(GLFWwindow* window, int key, int code, int action, in
 		if (theWindow->articulacion8 > -20) {
 			theWindow->articulacion8 -= 10.0;
 		}
-
-		theWindow->articulacion6g += 10.0;
 	}
 
 	if (key == GLFW_KEY_3)
@@ -282,8 +239,6 @@ void Window::ManejaTeclado(GLFWwindow* window, int key, int code, int action, in
 		if (theWindow->articulacion9 < 10) {
 			theWindow->articulacion9 += 10.0;
 		}
-
-		theWindow->articulacion7g += 10.0;
 	}
 
 	if (key == GLFW_KEY_4)
@@ -291,8 +246,6 @@ void Window::ManejaTeclado(GLFWwindow* window, int key, int code, int action, in
 		if (theWindow->articulacion9 > -20) {
 			theWindow->articulacion9 -= 10.0;
 		}
-
-		theWindow->articulacion8g += 10.0;
 	}
 	if (key == GLFW_KEY_5)
 	{
@@ -309,7 +262,7 @@ void Window::ManejaTeclado(GLFWwindow* window, int key, int code, int action, in
 	}
 	if (key == GLFW_KEY_7)
 	{
-		if (theWindow->articulacion11 < 10) {
+		if (theWindow->articulacion11 < 30) {
 			theWindow->articulacion11 += 10.0;
 		}
 	}

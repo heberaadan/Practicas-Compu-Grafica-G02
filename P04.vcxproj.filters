@@ -50,7 +50,7 @@
     <ClCompile Include="Window.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="P04-318122131.cpp">
+    <ClCompile Include="E04-318122131.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
