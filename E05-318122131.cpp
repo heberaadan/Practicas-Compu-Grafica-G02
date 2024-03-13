@@ -34,7 +34,7 @@ std::vector<Mesh*> meshList;
 std::vector<Shader> shaderList;
 
 Camera camera;
-Model Goddard_M,Goddar_cabeza_M,Goddar_mandibula_M;
+Model Goddard_M,Goddar_cabeza_M,Goddar_mandibula_M, Goddar_P1_M, Goddar_P2_M, Goddar_P3_M, Goddar_P4_M;
 
 Skybox skybox;
 
@@ -120,11 +120,19 @@ int main()
 	camera = Camera(glm::vec3(0.0f, 0.5f, 7.0f), glm::vec3(0.0f, 1.0f, 0.0f), -60.0f, 0.0f, 0.3f, 1.0f);
 
 	Goddard_M = Model();
-	Goddard_M.LoadModel("Models/goddar_cuerpo.obj");
+	Goddard_M.LoadModel("Models/cuerpo.obj");
 	Goddar_cabeza_M = Model();
 	Goddar_cabeza_M.LoadModel("Models/goddar_cabeza.obj");
 	Goddar_mandibula_M = Model();
 	Goddar_mandibula_M.LoadModel("Models/goddar_mandibula.obj");
+	Goddar_P1_M = Model();
+	Goddar_P1_M.LoadModel("Models/pataD.obj");
+	Goddar_P2_M = Model();
+	Goddar_P2_M.LoadModel("Models/pataD.obj");
+	Goddar_P3_M = Model();
+	Goddar_P3_M.LoadModel("Models/pataT.obj");
+	Goddar_P4_M = Model();
+	Goddar_P4_M.LoadModel("Models/pataT.obj");
 
 	std::vector<std::string> skyboxFaces;
 	skyboxFaces.push_back("Textures/Skybox/cupertin-lake_rt.tga");
@@ -144,6 +152,7 @@ int main()
 
 	glm::mat4 model(1.0);
 	glm::mat4 modelaux(1.0);
+	glm::mat4 cuerpo(1.0);
 	glm::vec3 color = glm::vec3(1.0f, 1.0f, 1.0f);
 
 	////Loop mientras no se cierra la ventana
@@ -187,16 +196,20 @@ int main()
 		color = glm::vec3(0.0f, 1.0f, 0.0f); //modelo de goddard de color negro
 		
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, -2.55f, 0.0f));
-		//modelaux = model;
+		model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
+		modelaux = model;
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		cuerpo = model;
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Goddard_M.RenderModel();//modificar por el modelo sin las 4 patas y sin cola
 
+		model = modelaux;
+
 		// Articulacion Cuello
 		color = glm::vec3(1.0f, 1.0f, 0.0f);
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
-		model = glm::translate(model, glm::vec3(0.0f, 3.5f, -1.4f));
+		model = glm::translate(model, glm::vec3(0.0f, 1.0f, -1.0f));
 		model = glm::rotate(model, glm::radians(mainWindow.getarticulacion1()), glm::vec3(1.0f, 0.0f, 0.0f));
 		model = glm::rotate(model, glm::radians(mainWindow.getarticulacion2()), glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
@@ -211,7 +224,34 @@ int main()
 		Goddar_mandibula_M.RenderModel();//modificar por el modelo sin las 4 patas y sin cola
 		//En sesión se separara una parte del modelo de Goddard y se unirá por jeraquía al cuerpo
 		modelaux = model;
-		//Cola
+		
+		// Patas delanteras
+		color = glm::vec3(0.0f, 0.0f, 1.0f);
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+
+		model = cuerpo;
+		model = glm::translate(model, glm::vec3(0.7f, 0.0f, 0.8f));
+		model = glm::rotate(model, glm::radians(mainWindow.getarticulacion3()), glm::vec3(1.0f, 0.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Goddar_P1_M.RenderModel();//modificar por el modelo sin las 4 patas y sin cola
+
+		model = cuerpo;
+		model = glm::translate(model, glm::vec3(0.7f, 0.0f, -0.8f));
+		model = glm::rotate(model, glm::radians(mainWindow.getarticulacion3()), glm::vec3(1.0f, 0.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Goddar_P2_M.RenderModel();
+
+		model = cuerpo;
+		model = glm::translate(model, glm::vec3(-0.9f, -0.7f, -0.8f));
+		model = glm::rotate(model, glm::radians(mainWindow.getarticulacion3()), glm::vec3(1.0f, 0.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Goddar_P3_M.RenderModel();
+
+		model = cuerpo;
+		model = glm::translate(model, glm::vec3(-0.9f, -0.7f, 0.8f));
+		model = glm::rotate(model, glm::radians(mainWindow.getarticulacion3()), glm::vec3(1.0f, 0.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Goddar_P4_M.RenderModel();
 
 
 		//Siguientes modelos
