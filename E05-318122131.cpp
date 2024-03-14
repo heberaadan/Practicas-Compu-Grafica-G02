@@ -34,7 +34,7 @@ std::vector<Mesh*> meshList;
 std::vector<Shader> shaderList;
 
 Camera camera;
-Model Goddard_M,Goddar_cabeza_M,Goddar_mandibula_M, Goddar_P1_M, Goddar_P2_M, Goddar_P3_M, Goddar_P4_M;
+Model Goddard_M, Goddar_cabeza_M, Goddar_mandibula_M, Goddar_PD_M, Goddar_PT_M;
 
 Skybox skybox;
 
@@ -125,14 +125,10 @@ int main()
 	Goddar_cabeza_M.LoadModel("Models/goddar_cabeza.obj");
 	Goddar_mandibula_M = Model();
 	Goddar_mandibula_M.LoadModel("Models/goddar_mandibula.obj");
-	Goddar_P1_M = Model();
-	Goddar_P1_M.LoadModel("Models/pataD.obj");
-	Goddar_P2_M = Model();
-	Goddar_P2_M.LoadModel("Models/pataD.obj");
-	Goddar_P3_M = Model();
-	Goddar_P3_M.LoadModel("Models/pataT.obj");
-	Goddar_P4_M = Model();
-	Goddar_P4_M.LoadModel("Models/pataT.obj");
+	Goddar_PD_M = Model();
+	Goddar_PD_M.LoadModel("Models/pataD.obj");
+	Goddar_PT_M = Model();
+	Goddar_PT_M.LoadModel("Models/pataT.obj");
 
 	std::vector<std::string> skyboxFaces;
 	skyboxFaces.push_back("Textures/Skybox/cupertin-lake_rt.tga");
@@ -193,7 +189,7 @@ int main()
 
 		//------------*INICIA DIBUJO DE NUESTROS DEMÁS OBJETOS-------------------*
 		//Goddard
-		color = glm::vec3(0.0f, 1.0f, 0.0f); //modelo de goddard de color negro
+		color = glm::vec3(0.0f, 1.0f, 0.0f); 
 		
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
@@ -202,7 +198,7 @@ int main()
 		cuerpo = model;
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Goddard_M.RenderModel();//modificar por el modelo sin las 4 patas y sin cola
+		Goddard_M.RenderModel();
 
 		model = modelaux;
 
@@ -231,27 +227,27 @@ int main()
 
 		model = cuerpo;
 		model = glm::translate(model, glm::vec3(0.7f, 0.0f, 0.8f));
-		model = glm::rotate(model, glm::radians(mainWindow.getarticulacion3()), glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(mainWindow.getarticulacion4()), glm::vec3(0.0f, 0.0f, 1.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Goddar_P1_M.RenderModel();//modificar por el modelo sin las 4 patas y sin cola
+		Goddar_PD_M.RenderModel();//modificar por el modelo sin las 4 patas y sin cola
 
 		model = cuerpo;
 		model = glm::translate(model, glm::vec3(0.7f, 0.0f, -0.8f));
-		model = glm::rotate(model, glm::radians(mainWindow.getarticulacion3()), glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(mainWindow.getarticulacion5()), glm::vec3(0.0f, 0.0f, 1.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Goddar_P2_M.RenderModel();
+		Goddar_PD_M.RenderModel();
 
 		model = cuerpo;
 		model = glm::translate(model, glm::vec3(-0.9f, -0.7f, -0.8f));
-		model = glm::rotate(model, glm::radians(mainWindow.getarticulacion3()), glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(mainWindow.getarticulacion6()), glm::vec3(0.0f, 0.0f, 1.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Goddar_P3_M.RenderModel();
+		Goddar_PT_M.RenderModel();
 
 		model = cuerpo;
 		model = glm::translate(model, glm::vec3(-0.9f, -0.7f, 0.8f));
-		model = glm::rotate(model, glm::radians(mainWindow.getarticulacion3()), glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(mainWindow.getarticulacion7()), glm::vec3(0.0f, 0.0f, 1.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Goddar_P4_M.RenderModel();
+		Goddar_PT_M.RenderModel();
 
 
 		//Siguientes modelos
