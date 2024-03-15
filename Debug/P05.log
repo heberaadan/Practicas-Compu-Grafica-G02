@@ -1,10 +1,11 @@
-﻿  P05-318122131.cpp
+﻿  E05-318122131.cpp
 C:\Users\Hhebe\OneDrive\Documentos\8° Semestre\Compu Grafica\Practicas\Practicas\P05\Window.h(12,36): warning C4244: 'return': conversión de 'GLint' a 'GLfloat'; posible pérdida de datos
-  (compilando archivo de origen "P05-318122131.cpp")
+  (compilando archivo de origen "E05-318122131.cpp")
   
 C:\Users\Hhebe\OneDrive\Documentos\8° Semestre\Compu Grafica\Practicas\Practicas\P05\Window.h(13,37): warning C4244: 'return': conversión de 'GLint' a 'GLfloat'; posible pérdida de datos
-  (compilando archivo de origen "P05-318122131.cpp")
+  (compilando archivo de origen "E05-318122131.cpp")
   
-C:\Users\Hhebe\OneDrive\Documentos\8° Semestre\Compu Grafica\Practicas\Practicas\P05\P05-318122131.cpp(152,15): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\Hhebe\OneDrive\Documentos\8° Semestre\Compu Grafica\Practicas\Practicas\P05\P05-318122131.cpp(154,33): warning C4244: '+=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\Hhebe\OneDrive\Documentos\8° Semestre\Compu Grafica\Practicas\Practicas\P05\E05-318122131.cpp(157,15): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\Hhebe\OneDrive\Documentos\8° Semestre\Compu Grafica\Practicas\Practicas\P05\E05-318122131.cpp(159,33): warning C4244: '+=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+LINK : warning LNK4098: la biblioteca predeterminada'MSVCRT' entra en conflicto con otras bibliotecas; use la biblioteca /NODEFAULTLIB:biblioteca
   P05.vcxproj -> C:\Users\Hhebe\OneDrive\Documentos\8° Semestre\Compu Grafica\Practicas\Practicas\Debug\P05.exe

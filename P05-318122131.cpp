@@ -206,7 +206,7 @@ int main()
 
 		model = glm::translate(model, glm::vec3(-2.0f, 8.2f, 10.0f));
 		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
-		model = glm::rotate(model, glm::radians(mainWindow.getarticulacion1()), glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(mainWindow.getarticulacion8()), glm::vec3(1.0f, 0.0f, 0.0f));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Capo.RenderModel();
@@ -220,15 +220,15 @@ int main()
 
 		model = glm::translate(model, glm::vec3(5.0f, 2.0f, 13.0f));
 		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
-		model = glm::rotate(model, glm::radians(mainWindow.getarticulacion2()), glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(mainWindow.getarticulacion9()), glm::vec3(1.0f, 0.0f, 0.0f));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Llanta.RenderModel();
 
 		model = modelaux;
-		model = glm::translate(model, glm::vec3(-7.0f, 2.0f, 13.0f));
+		model = glm::translate(model, glm::vec3(-7.5f, 2.0f, 13.0f));
 		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
-		model = glm::rotate(model, glm::radians(mainWindow.getarticulacion2()), glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(mainWindow.getarticulacion9()), glm::vec3(1.0f, 0.0f, 0.0f));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Llanta.RenderModel();
@@ -240,15 +240,15 @@ int main()
 		model = modelaux;
 		model = glm::translate(model, glm::vec3(5.0f, 2.0f, -9.0f));
 		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
-		model = glm::rotate(model, glm::radians(mainWindow.getarticulacion2()), glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(mainWindow.getarticulacion9()), glm::vec3(1.0f, 0.0f, 0.0f));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Llanta.RenderModel();
 
 		model = modelaux;
-		model = glm::translate(model, glm::vec3(-7.0f, 2.0f, -9.0f));
+		model = glm::translate(model, glm::vec3(-7.5f, 2.0f, -9.0f));
 		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
-		model = glm::rotate(model, glm::radians(mainWindow.getarticulacion2()), glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(mainWindow.getarticulacion9()), glm::vec3(1.0f, 0.0f, 0.0f));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Llanta.RenderModel();

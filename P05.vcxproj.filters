@@ -98,7 +98,7 @@
     <ClCompile Include="Window.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="P05-318122131.cpp">
+    <ClCompile Include="E05-318122131.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
