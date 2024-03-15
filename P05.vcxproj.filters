@@ -83,9 +83,6 @@
     <ClCompile Include="PointLight.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="E05-318122131.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
     <ClCompile Include="Shader_m.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
@@ -99,6 +96,9 @@
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="Window.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="P05-318122131.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>

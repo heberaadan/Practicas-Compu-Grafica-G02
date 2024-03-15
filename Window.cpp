@@ -46,7 +46,7 @@ int Window::Initialise()
 	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
 	//CREAR VENTANA
-	mainWindow = glfwCreateWindow(width, height, "Practica XX: Nombre de la práctica", NULL, NULL);
+	mainWindow = glfwCreateWindow(width, height, "Practica 05: Optimizacion y Carga de Modelos", NULL, NULL);
 
 	if (!mainWindow)
 	{
@@ -128,25 +128,23 @@ void Window::ManejaTeclado(GLFWwindow* window, int key, int code, int action, in
 	}
 	if (key == GLFW_KEY_R)
 	{
-		if (theWindow->articulacion1 < 10) {
-			theWindow->articulacion1 += 5.0;
+		if (theWindow->articulacion1 > -45) {
+			theWindow->articulacion1 -= 5.0;
 		}
 		
 	}
 
 	if (key == GLFW_KEY_F)
 	{
-		if (theWindow->articulacion1 > -10) {
-			theWindow->articulacion1 -= 5.0;
+		if (theWindow->articulacion1 < 0) {
+			theWindow->articulacion1 += 5.0;
 		}
 
 	}
 
 	if (key == GLFW_KEY_T)
 	{
-		if (theWindow->articulacion2 < 30) {
-			theWindow->articulacion2 += 5.0;
-		}
+		theWindow->articulacion2 += 5.0;
 	}
 
 	if (key == GLFW_KEY_G)
