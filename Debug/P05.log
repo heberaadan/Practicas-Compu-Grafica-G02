@@ -5,6 +5,6 @@ C:\Users\Hhebe\OneDrive\Documentos\8° Semestre\Compu Grafica\Practicas\Practica
 C:\Users\Hhebe\OneDrive\Documentos\8° Semestre\Compu Grafica\Practicas\Practicas\P05\Window.h(13,37): warning C4244: 'return': conversión de 'GLint' a 'GLfloat'; posible pérdida de datos
   (compilando archivo de origen "P05-318122131.cpp")
   
-C:\Users\Hhebe\OneDrive\Documentos\8° Semestre\Compu Grafica\Practicas\Practicas\P05\P05-318122131.cpp(153,15): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\Hhebe\OneDrive\Documentos\8° Semestre\Compu Grafica\Practicas\Practicas\P05\P05-318122131.cpp(155,33): warning C4244: '+=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\Hhebe\OneDrive\Documentos\8° Semestre\Compu Grafica\Practicas\Practicas\P05\P05-318122131.cpp(152,15): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\Hhebe\OneDrive\Documentos\8° Semestre\Compu Grafica\Practicas\Practicas\P05\P05-318122131.cpp(154,33): warning C4244: '+=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
   P05.vcxproj -> C:\Users\Hhebe\OneDrive\Documentos\8° Semestre\Compu Grafica\Practicas\Practicas\Debug\P05.exe

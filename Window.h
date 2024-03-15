@@ -27,12 +27,14 @@ public:
 	GLfloat getarticulacion5() { return articulacion5; }
 	GLfloat getarticulacion6() { return articulacion6; }
 	GLfloat getarticulacion7() { return articulacion7; }
+	GLfloat getmover() { return mover; }
 
 	~Window();
 private: 
 	GLFWwindow *mainWindow;
 	GLint width, height;
 	GLfloat rotax,rotay,rotaz, articulacion1, articulacion2, articulacion3, articulacion4, articulacion5, articulacion6, articulacion7;
+	GLfloat mover;
 	bool keys[1024];
 	GLint bufferWidth, bufferHeight;
 	GLfloat lastX;

@@ -23,6 +23,7 @@ Window::Window(GLint windowWidth, GLint windowHeight)
 	articulacion5 = 0.0f;
 	articulacion6 = 0.0f;
 	articulacion7 = 0.0f;
+	mover = 0.0f;
 	
 	for (size_t i = 0; i < 1024; i++)
 	{
@@ -131,93 +132,24 @@ void Window::ManejaTeclado(GLFWwindow* window, int key, int code, int action, in
 		if (theWindow->articulacion1 > -45) {
 			theWindow->articulacion1 -= 5.0;
 		}
-		
 	}
-
 	if (key == GLFW_KEY_F)
 	{
 		if (theWindow->articulacion1 < 0) {
 			theWindow->articulacion1 += 5.0;
 		}
-
 	}
 
-	if (key == GLFW_KEY_T)
-	{
-		theWindow->articulacion2 += 5.0;
-	}
-
-	if (key == GLFW_KEY_G)
-	{
-		if (theWindow->articulacion2 > -30) {
-			theWindow->articulacion2 -= 5.0;
-		}
-	}
-
-	if (key == GLFW_KEY_Y)
-	{
-		if (theWindow->articulacion3 < 10) {
-			theWindow->articulacion3 += 5.0;
-		}
-
-	}
-	if (key == GLFW_KEY_H)
-	{
-		if (theWindow->articulacion3 > -10) {
-			theWindow->articulacion3 -= 5.0;
-		}
-	}
-	if (key == GLFW_KEY_U)
-	{
-		if (theWindow->articulacion4 < 45) {
-			theWindow->articulacion4 += 5.0;
-		}
-
-	}
-	if (key == GLFW_KEY_J)
-	{
-		if (theWindow->articulacion4 > -30) {
-			theWindow->articulacion4 -= 5.0;
-		}
-	}
 	if (key == GLFW_KEY_I)
 	{
-		if (theWindow->articulacion5 < 45) {
-			theWindow->articulacion5 += 5.0;
-		}
-
+		theWindow->articulacion2 += 15.0;
+		theWindow->mover += 0.5;
 	}
+
 	if (key == GLFW_KEY_K)
 	{
-		if (theWindow->articulacion5 > -30) {
-			theWindow->articulacion5 -= 5.0;
-		}
-	}
-	if (key == GLFW_KEY_O)
-	{
-		if (theWindow->articulacion6 < 45) {
-			theWindow->articulacion6 += 5.0;
-		}
-
-	}
-	if (key == GLFW_KEY_L)
-	{
-		if (theWindow->articulacion6 > -30) {
-			theWindow->articulacion6 -= 5.0;
-		}
-	}
-	if (key == GLFW_KEY_Z)
-	{
-		if (theWindow->articulacion7 < 45) {
-			theWindow->articulacion7 += 5.0;
-		}
-
-	}
-	if (key == GLFW_KEY_X)
-	{
-		if (theWindow->articulacion7 > -30) {
-			theWindow->articulacion7 -= 5.0;
-		}
+		theWindow->articulacion2 -= 15.0;
+		theWindow->mover -= 0.5;
 	}
 
 	if (key == GLFW_KEY_D && action == GLFW_PRESS)
