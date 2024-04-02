@@ -1,0 +1,12 @@
+﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(531,5): warning MSB8028: El directorio intermedio (Debug\) contiene archivos compartidos de otro proyecto (practica6.vcxproj). Esto puede dar lugar a un comportamiento incorrecto de limpieza y recompilación.
+  E06-318122131.cpp
+C:\Users\Hhebe\OneDrive\Documentos\8° Semestre\Compu Grafica\Practicas\Visual\P06\Window.h(12,36): warning C4244: 'return': conversión de 'GLint' a 'GLfloat'; posible pérdida de datos
+  (compilando archivo de origen "E06-318122131.cpp")
+  
+C:\Users\Hhebe\OneDrive\Documentos\8° Semestre\Compu Grafica\Practicas\Visual\P06\Window.h(13,37): warning C4244: 'return': conversión de 'GLint' a 'GLfloat'; posible pérdida de datos
+  (compilando archivo de origen "E06-318122131.cpp")
+  
+C:\Users\Hhebe\OneDrive\Documentos\8° Semestre\Compu Grafica\Practicas\Visual\P06\E06-318122131.cpp(318,15): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\Hhebe\OneDrive\Documentos\8° Semestre\Compu Grafica\Practicas\Visual\P06\E06-318122131.cpp(320,33): warning C4244: '+=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+LINK : warning LNK4098: la biblioteca predeterminada'MSVCRT' entra en conflicto con otras bibliotecas; use la biblioteca /NODEFAULTLIB:biblioteca
+  P06.vcxproj -> C:\Users\Hhebe\OneDrive\Documentos\8° Semestre\Compu Grafica\Practicas\Visual\Debug\P06.exe
