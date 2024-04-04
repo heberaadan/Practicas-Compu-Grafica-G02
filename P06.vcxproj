@@ -150,10 +150,10 @@
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="DirectionalLight.cpp" />
-    <ClCompile Include="E06-318122131.cpp" />
     <ClCompile Include="Light.cpp" />
     <ClCompile Include="Mesh_tn.cpp" />
     <ClCompile Include="Model.cpp" />
+    <ClCompile Include="P06-318122131.cpp" />
     <ClCompile Include="PointLight.cpp" />
     <ClCompile Include="Shader_m.cpp" />
     <ClCompile Include="Skybox.cpp" />
