@@ -48,9 +48,7 @@ Texture plainTexture;
 Texture pisoTexture;
 Texture AgaveTexture;
 
-Model Kitt_M;
-Model Llanta_M;
-Model Blackhawk_M;
+Model coche, cofre, llanta, Blackhawk_M;
 
 
 Skybox skybox;
@@ -145,15 +143,15 @@ void CreateObjects()
 	};
 
 	GLfloat vegetacionVertices[] = {
-		-0.5f, -0.5f, 0.0f,		0.0f, 0.0f,		0.0f, 0.0f, 0.0f,
-		0.5f, -0.5f, 0.0f,		1.0f, 0.0f,		0.0f, 0.0f, 0.0f,
-		0.5f, 0.5f, 0.0f,		1.0f, 1.0f,		0.0f, 0.0f, 0.0f,
-		-0.5f, 0.5f, 0.0f,		0.0f, 1.0f,		0.0f, 0.0f, 0.0f,
+		-0.5f, -0.5f, 0.0f,		0.0f, 0.0f,		-1.0f, 0.0f, -1.0f,
+		0.5f, -0.5f, 0.0f,		1.0f, 0.0f,		-1.0f, 0.0f, -1.0f,
+		0.5f, 0.5f, 0.0f,		1.0f, 1.0f,		-1.0f, 0.0f, -1.0f,
+		-0.5f, 0.5f, 0.0f,		0.0f, 1.0f,		-1.0f, 0.0f, -1.0f,
 
-		0.0f, -0.5f, -0.5f,		0.0f, 0.0f,		0.0f, 0.0f, 0.0f,
-		0.0f, -0.5f, 0.5f,		1.0f, 0.0f,		0.0f, 0.0f, 0.0f,
-		0.0f, 0.5f, 0.5f,		1.0f, 1.0f,		0.0f, 0.0f, 0.0f,
-		0.0f, 0.5f, -0.5f,		0.0f, 1.0f,		0.0f, 0.0f, 0.0f,
+		0.0f, -0.5f, -0.5f,		0.0f, 0.0f,		-1.0f, 0.0f, -1.0f,
+		0.0f, -0.5f, 0.5f,		1.0f, 0.0f,		-1.0f, 0.0f, -1.0f,
+		0.0f, 0.5f, 0.5f,		1.0f, 1.0f,		-1.0f, 0.0f, -1.0f,
+		0.0f, 0.5f, -0.5f,		0.0f, 1.0f,		-1.0f, 0.0f, -1.0f,
 
 
 	};
@@ -211,10 +209,12 @@ int main()
 	AgaveTexture = Texture("Textures/Agave.tga");
 	AgaveTexture.LoadTextureA();
 
-	Kitt_M = Model();
-	Kitt_M.LoadModel("Models/kitt_optimizado.obj");
-	Llanta_M = Model();
-	Llanta_M.LoadModel("Models/llanta_optimizada.obj");
+	coche = Model();
+	coche.LoadModel("Models/coche.obj");
+	cofre = Model();
+	cofre.LoadModel("Models/cofre.obj");
+	llanta = Model();
+	llanta.LoadModel("Models/llanta.obj");
 	Blackhawk_M = Model();
 	Blackhawk_M.LoadModel("Models/uh60.obj");
 	
@@ -239,6 +239,7 @@ int main()
 		0.0f, 0.0f, -1.0f);
 	//contador de luces puntuales
 	unsigned int pointLightCount = 0;
+
 	//Declaración de primer luz puntual
 	pointLights[0] = PointLight(1.0f, 0.0f, 0.0f,
 		0.0f, 1.0f,
@@ -248,21 +249,29 @@ int main()
 
 	unsigned int spotLightCount = 0;
 	//linterna
-	spotLights[0] = SpotLight(1.0f, 1.0f, 1.0f,
+	spotLights[0] = SpotLight(1.0f, 0.0f, 1.0f,
 		0.0f, 2.0f,
 		0.0f, 0.0f, 0.0f,
 		0.0f, -1.0f, 0.0f,
-		1.0f, 0.0f, 0.0f,
-		5.0f);
-	spotLightCount++;
+		0.0f, 0.0f, 1.0f,
+		20.0f); // Nivel de apertura del cono 
+	spotLightCount++; // SIEMPRE INCREMENTAR EL CONTADOR Y EL ARREGLO
 
 	//luz fija
-	spotLights[1] = SpotLight(0.0f, 1.0f, 0.0f,
+	spotLights[1] = SpotLight(0.0f, 1.0f, 0.0f, // Color
 		1.0f, 2.0f,
-		5.0f, 10.0f, 0.0f,
-		0.0f, -5.0f, 0.0f,
+		-2.0f, 8.2f, 10.0f,
+		0.0f, 0.0f, 10.0f,
+		-1.0f, 0.0f, 0.0f,
+		30.0f);
+	spotLightCount++;
+
+	spotLights[2] = SpotLight(0.0f, 0.0f, 1.0f,
+		1.0f, 2.0f,
+		-2.0f, 8.2f, 10.0f,
 		1.0f, 0.0f, 0.0f,
-		15.0f);
+		0.0f, 0.0f, 1.0f,
+		30.0f);
 	spotLightCount++;
 	
 	//se crean mas luces puntuales y spotlight 
@@ -307,14 +316,12 @@ int main()
 		//sirve para que en tiempo de ejecución (dentro del while) se cambien propiedades de la luz
 			glm::vec3 lowerLight = camera.getCameraPosition();
 		lowerLight.y -= 0.3f;
-		spotLights[0].SetFlash(lowerLight, camera.getCameraDirection());
+		spotLights[0].SetFlash(lowerLight, camera.getCameraDirection()); // La posiciona a donde esta la camará
 
 		//información al shader de fuentes de iluminación
 		shaderList[0].SetDirectionalLight(&mainLight);
 		shaderList[0].SetPointLights(pointLights, pointLightCount);
 		shaderList[0].SetSpotLights(spotLights, spotLightCount);
-
-
 
 		glm::mat4 model(1.0);
 		glm::mat4 modelaux(1.0);
@@ -327,52 +334,71 @@ int main()
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 
 		pisoTexture.UseTexture();
-		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
 
 		meshList[2]->RenderMesh();
 
-		//Instancia del coche 
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f + mainWindow.getmuevex(), 0.5f, -3.0f));
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+
+		//************************************************************************
+			//			COCHE
+		//************************************************************************
+
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(0.0f, 0.0f, mainWindow.getmuevex()));
 		modelaux = model;
-		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
-		model = glm::rotate(model, -90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Kitt_M.RenderModel();
+		coche.RenderModel();
+		Material_brillante.UseMaterial(uniformSpecularIntensity, uniformShininess);
 
-		//Llanta delantera izquierda
-		model = modelaux;
-		model = glm::translate(model, glm::vec3(7.0f, -0.5f, 8.0f));
-		model = glm::rotate(model, -90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.4f));
-		color = glm::vec3(0.5f, 0.5f, 0.5f);//llanta con color gris
-		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Llanta_M.RenderModel();
+		//************************************************************************
+			//			CAPO
+		//************************************************************************
 
-		//Llanta trasera izquierda
 		model = modelaux;
-		model = glm::translate(model, glm::vec3(15.5f, -0.5f, 8.0f));
-		model = glm::rotate(model, -90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.4f));
+		model = glm::translate(model, glm::vec3(-2.0f, 8.2f, 10.0f));
+		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
+		//model = glm::rotate(model, glm::radians(mainWindow.getarticulacion1()), glm::vec3(1.0f, 0.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Llanta_M.RenderModel();
+		cofre.RenderModel();
 
-		//Llanta delantera derecha
-		model = modelaux;
-		model = glm::translate(model, glm::vec3(7.0f, -0.5f, 1.5f));
-		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.4f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Llanta_M.RenderModel();
+		//************************************************************************
+			//			LLANTAS DELANTERAS
+		//************************************************************************
 
-		//Llanta trasera derecha
 		model = modelaux;
-		model = glm::translate(model, glm::vec3(15.5f, -0.5f, 1.5f));
-		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.4f));
+		model = glm::translate(model, glm::vec3(5.0f, 2.7f, 13.0f));
+		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
+		//model = glm::rotate(model, glm::radians(mainWindow.getarticulacion2()), glm::vec3(1.0f, 0.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Llanta_M.RenderModel();
+		llanta.RenderModel();
+
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(-8.0f, 2.7f, 13.0f));
+		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
+		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		//model = glm::rotate(model, glm::radians(mainWindow.getarticulacion2()), glm::vec3(1.0f, 0.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		llanta.RenderModel();
+
+		//************************************************************************
+			//			LLANTAS TRASERAS
+		//************************************************************************
+
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(5.0f, 2.7f, -9.0f));
+		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
+		//model = glm::rotate(model, glm::radians(mainWindow.getarticulacion2()), glm::vec3(1.0f, 0.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		llanta.RenderModel();
+
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(-8.0f, 2.7f, -9.0f));
+		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
+		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		//model = glm::rotate(model, glm::radians(mainWindow.getarticulacion2()), glm::vec3(1.0f, 0.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		llanta.RenderModel();
 	
 
 		model = glm::mat4(1.0);
