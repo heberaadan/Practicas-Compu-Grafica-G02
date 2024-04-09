@@ -13,6 +13,10 @@ public:
 	GLfloat getBufferHeight() { return bufferHeight; }
 	GLfloat getXChange();
 	GLfloat getYChange();
+	GLfloat getarticulacion1() { return articulacion1;  };
+	GLfloat getarticulacion2() { return articulacion2; };
+	GLfloat getmover() { return mover; };
+
 	GLfloat getmuevex() { return muevex; }
 	GLfloat getangulocola() { return angulocola; }
 	bool getShouldClose() {
@@ -32,6 +36,7 @@ private:
 	GLfloat xChange;
 	GLfloat yChange;
 	GLfloat muevex;
+	GLfloat articulacion1, articulacion2, mover;
 	GLfloat angulocola=0.0f;
 	bool mouseFirstMoved;
 	static void ManejaTeclado(GLFWwindow* window, int key, int code, int action, int mode);

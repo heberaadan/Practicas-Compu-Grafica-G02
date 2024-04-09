@@ -47,9 +47,7 @@ Texture dadoTexture;
 Texture logofiTexture;
 Texture Dado;
 
-Model Kitt_M;
-Model Llanta_M;
-Model Dado_M,Dado_A;
+Model llanta, coche, cofre;
 
 Skybox skybox;
 
@@ -300,7 +298,7 @@ int main()
 	CrearDado();
 	CreateShaders();
 
-	camera = Camera(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), -60.0f, 0.0f, 0.3f, 0.5f);
+	camera = Camera(glm::vec3(0.0f, 15.0f, -20.0f), glm::vec3(0.0f, 1.0f, 0.0f), -60.0f, 0.0f, 0.3f, 0.5f);
 
 	brickTexture = Texture("Textures/brick.png");
 	brickTexture.LoadTextureA();
@@ -318,6 +316,12 @@ int main()
 	Dado = Texture("Textures/DadoTen.tga");
 	Dado.LoadTexture();
 
+	llanta = Model();
+	llanta.LoadModel("Models/llanta.obj");
+	coche = Model();
+	coche.LoadModel("Models/coche.obj");
+	cofre = Model();
+	cofre.LoadModel("Models/cofre.obj");
 	
 	std::vector<std::string> skyboxFaces;
 	skyboxFaces.push_back("Textures/Skybox/cupertin-lake_rt.tga");
@@ -388,13 +392,75 @@ int main()
 		//Dado de Opengl
 		//Ejercicio 1: Texturizar su cubo con la imagen dado_animales ya optimizada por ustedes
 
-		model = glm::translate(model, glm::vec3(-1.5f, 10.0f, -2.0f));
+		//***********************************************************************************
+				// DADO 10 Caras
+		//***********************************************************************************
+
+		model = glm::translate(model, glm::vec3(-1.5f, 25.0f, -2.0f));
 		model = glm::rotate(model, glm::radians(grad), glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Dado.UseTexture();
 		meshList[4]->RenderMesh();
 		
+		//************************************************************************
+			//			COCHE
+		//************************************************************************
 		
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(0.0f, 0.0f, mainWindow.getmover()));
+		modelaux = model;
+		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		coche.RenderModel();
+
+		//************************************************************************
+			//			CAPO
+		//************************************************************************
+
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(-2.0f, 8.2f, 10.0f));
+		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
+		model = glm::rotate(model, glm::radians(mainWindow.getarticulacion1()), glm::vec3(1.0f, 0.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		cofre.RenderModel();
+
+		//************************************************************************
+			//			LLANTAS DELANTERAS
+		//************************************************************************
+
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(5.0f, 2.7f, 13.0f));
+		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
+		model = glm::rotate(model, glm::radians(mainWindow.getarticulacion2()), glm::vec3(1.0f, 0.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		llanta.RenderModel();
+
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(-8.0f, 2.7f, 13.0f));
+		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
+		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(mainWindow.getarticulacion2()), glm::vec3(1.0f, 0.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		llanta.RenderModel();
+
+		//************************************************************************
+			//			LLANTAS TRASERAS
+		//************************************************************************
+
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(5.0f, 2.7f, -9.0f));
+		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
+		model = glm::rotate(model, glm::radians(mainWindow.getarticulacion2()), glm::vec3(1.0f, 0.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		llanta.RenderModel();
+
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(-8.0f, 2.7f, -9.0f));
+		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
+		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(mainWindow.getarticulacion2()), glm::vec3(1.0f, 0.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		llanta.RenderModel();
 
 		//glDisable(GL_BLEND);
 		
