@@ -1,0 +1,10 @@
+﻿  E07-318122131.cpp
+C:\Users\Hhebe\OneDrive\Documentos\8° Semestre\Compu Grafica\Practicas\Visual\P07\Window.h(12,36): warning C4244: 'return': conversión de 'GLint' a 'GLfloat'; posible pérdida de datos
+  (compilando archivo de origen "E07-318122131.cpp")
+  
+C:\Users\Hhebe\OneDrive\Documentos\8° Semestre\Compu Grafica\Practicas\Visual\P07\Window.h(13,37): warning C4244: 'return': conversión de 'GLint' a 'GLfloat'; posible pérdida de datos
+  (compilando archivo de origen "E07-318122131.cpp")
+  
+C:\Users\Hhebe\OneDrive\Documentos\8° Semestre\Compu Grafica\Practicas\Visual\P07\E07-318122131.cpp(279,15): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\Hhebe\OneDrive\Documentos\8° Semestre\Compu Grafica\Practicas\Visual\P07\E07-318122131.cpp(281,33): warning C4244: '+=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+  P07.vcxproj -> C:\Users\Hhebe\OneDrive\Documentos\8° Semestre\Compu Grafica\Practicas\Visual\Debug\P07.exe
