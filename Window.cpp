@@ -13,6 +13,11 @@ Window::Window(GLint windowWidth, GLint windowHeight)
 {
 	width = windowWidth;
 	height = windowHeight;
+
+	articulacion1 = 0.0f;
+	articulacion2 = 0.0f;
+	mover = 0.0f;
+
 	muevex = 2.0f;
 	for (size_t i = 0; i < 1024; i++)
 	{
@@ -36,8 +41,8 @@ int Window::Initialise()
 	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
 	//CREAR VENTANA
-	mainWindow = glfwCreateWindow(width, height, "PracticaXX:Nombre de la practica", NULL, NULL);
-
+	mainWindow = glfwCreateWindow(width, height, "Practica 08: Iluminación II", NULL, NULL);
+	
 	if (!mainWindow)
 	{
 		printf("Fallo en crearse la ventana con GLFW");
@@ -112,6 +117,60 @@ void Window::ManejaTeclado(GLFWwindow* window, int key, int code, int action, in
 	{
 		theWindow-> muevex -= 1.0;
 	}
+	if (key == GLFW_KEY_R)
+	{
+		if (theWindow->articulacion1 < 10) {
+			theWindow->articulacion1 += 5.0;
+		}
+
+		if (theWindow->articulacion1 < 0) {
+			theWindow->articulacion1 += 5.0;
+		}
+
+	}
+
+	if (key == GLFW_KEY_F)
+	{
+		if (theWindow->articulacion1 > -10) {
+			theWindow->articulacion1 -= 5.0;
+		}
+
+	}
+
+	if (key == GLFW_KEY_I)
+	{
+		theWindow->articulacion2 -= 10.f;
+		theWindow->mover += 0.5;
+
+	}
+	if (key == GLFW_KEY_K)
+	{
+		theWindow->articulacion2 += 10.f;
+		theWindow->mover -= 0.5;
+	}
+
+	if (key == GLFW_KEY_V)
+	{
+		if (theWindow->angulocola > 40.0)
+		{
+		}
+		else
+		{
+			theWindow->angulocola += 10.0;
+		}
+	}
+
+	if (key == GLFW_KEY_B)
+	{
+		if (theWindow->angulocola < -40.0)
+		{
+		}
+		else
+		{
+			theWindow->angulocola -= 10.0;
+		}
+	}
+	
 
 
 
