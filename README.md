@@ -1,5 +1,3 @@
----
-
 ### P03-318122131
 
 **Descripción:** Este código genera una pirámide Rubik (pyraminx) en un entorno 3D, compuesta por 9 pirámides en cada cara. Cada cara de la pirámide tiene un color distinto y las separaciones entre las pirámides pequeñas se visualizan con líneas oscuras, lo que permite distinguir cada instancia claramente.
