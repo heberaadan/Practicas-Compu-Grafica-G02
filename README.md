@@ -10,5 +10,4 @@
 **Número de Cuenta:** 318122131  
 **Grupo de Laboratorio:** 02  
 **Grupo de Teoría:** 04  
-**Semestre:** 2024-2  
-**Fecha de Entrega Límite:** 20/02/2024
+**Semestre:** 2024-2 
