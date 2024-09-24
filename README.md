@@ -4,7 +4,7 @@
 
 ### `P01-318122131.cpp`
 
-Este proyecto es parte del curso de Computación Gráfica e Interacción Humano-Computadora en la Facultad de Ingeniería de la Universidad Nacional Autónoma de México. El objetivo es ilustrar el uso de OpenGL para la renderización de gráficos 2D básicos mediante la creación de triángulos que forman letras.
+Este proyecto es parte del curso de **Computación Gráfica e Interacción Humano-Computadora** en la Facultad de Ingeniería de la Universidad Nacional Autónoma de México. El objetivo es ilustrar el uso de OpenGL para la renderización de gráficos 2D básicos mediante la creación de triángulos que forman letras.
 
 ### Funcionamiento del Programa
 
